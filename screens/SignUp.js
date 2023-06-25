@@ -135,6 +135,9 @@ function renderForm() {
                 }}
               />
             </View>
+            <View style={{justifyContent: 'center', marginLeft: 5}}>
+                <Text style={{color: COLORS.white, fontSize: 16}}>+234</Text>
+            </View>
           </TouchableOpacity>
 
           {/* Phone Number */}
@@ -154,8 +157,65 @@ function renderForm() {
           />
         </View>
       </View>
+        {/* Password */}
+        <View style={{ marginTop: SIZES.padding * 2 }}>
+            <Text style={{ color: COLORS.lightGreen, fontSize: 16}}>Password</Text>
+            <TextInput
+                style= {{
+                    marginVertical: SIZES.padding,
+                    borderBottomColor: COLORS.white,
+                    borderBottomWidth: 1,
+                    height: 40,
+                    color: COLORS.white,
+                    fontSize: 16,
+                }}
+                placeholder="Enter Password"
+                placeholderTextColor={COLORS.green}
+                selectionColor={COLORS.white}
+                secureTextEntry={true}
+            />
+            <TouchableOpacity
+                style={{
+                    position: 'absolute',
+                    right: 0,
+                    bottom: 10,
+                    height: 30,
+                    width: 30
+                }}
+                onPress={()=> console.log('toggle')}
+            >
+                <Image 
+                    source={icons.eye}
+                    style={{
+                        height: 20,
+                        width: 20,
+                        tintColor: COLORS.white,
+                    }}
+                />
+            </TouchableOpacity>
+        </View>
     </View>
   );
+};
+
+
+function renderButton() {
+    return (
+        <View style={{margin: SIZES.padding * 3}}>
+            <TouchableOpacity
+                style={{
+                    height: 60,
+                    backgroundColor: COLORS.black,
+                    borderRadius: SIZES.radius / 1.5,
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                }}
+                onPress={()=> console.log('Home')}  
+            >
+                <Text style={{ color: COLORS.white, fontSize: 20}}>Continue</Text>
+            </TouchableOpacity>
+        </View>
+    )
 }
 
 const SignUp = () => {
@@ -172,6 +232,7 @@ const SignUp = () => {
           {renderHeader()}
           {renderLogo()}
           {renderForm()}
+          {renderButton()}
         </ScrollView>
       </LinearGradient>
     </KeyboardAvoidingView>
