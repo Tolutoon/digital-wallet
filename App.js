@@ -6,6 +6,8 @@ import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 
 import { SignUp } from "./screens";
 
+import Tabs from "./navigation/tabs";
+
 const theme = {
   ...DefaultTheme,
   colors: {
@@ -26,6 +28,7 @@ export default function App() {
         <Stack.Screen 
         name='SignUp' component={SignUp}
         />
+        <Stack.Screen name='Home' component={Tabs}/>
       </Stack.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>
