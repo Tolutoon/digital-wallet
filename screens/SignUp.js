@@ -144,7 +144,7 @@ const SignUp = ({navigation}) => {
                 borderBottomWidth: 1,
                 flexDirection: "row",
               }}
-              onPress={() => setModalVisible(true)}
+              onPress={() => console.log('Show Modal')}
             >
               <View style={{ justifyContent: "center" }}>
                 <Image
@@ -251,6 +251,29 @@ const SignUp = ({navigation}) => {
   }
 
   function renderAreaCodeModal() {
+
+    const renderItem = ({item}) => {
+      return (
+        <TouchableOpacity
+          style={{padding: SIZES.padding, flexDirection: 'row'}}
+          onPress={()=>{
+            setSelectedArea(item)
+            setModalVisible(false)
+          }}
+          >
+          <Image 
+            source={{uri: item.flag}}
+            style={{
+              width: 30,
+              height: 30,
+              marginRight: 10
+            }}
+          />
+          <Text style={{fontSize: 14}}>{item.name}</Text>
+        </TouchableOpacity>
+      )
+    }
+
     return (
       <Modal
         animationType="slide"
@@ -270,7 +293,16 @@ const SignUp = ({navigation}) => {
                 borderRadius: SIZES.radius
               }}
             >
-
+              <FlatList 
+                data={areas}
+                renderItem={renderItem}
+                keyExtractor={(item) => item.code}
+                showsVerticalScrollIndicator={false}
+                style={{
+                  padding: SIZES.padding * 2,
+                  marginBottom: SIZES.padding * 2
+                }}
+              />
             </View>
           </View>
         </TouchableWithoutFeedback>
